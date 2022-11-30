@@ -11,7 +11,6 @@ console.log(Frid.print())
 Jhon.protected()
 console.log(Jhon.protection)
 setTimeout(()=>{console.log(Jhon.protection)},4000)
-
 Jhon.deffend(Jhon1.Damage)
 Jhon.deffend(Jhon1.Damage)
 Jhon1.deffend(Frid.Damage)
