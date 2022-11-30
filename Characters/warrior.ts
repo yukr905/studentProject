@@ -11,7 +11,7 @@ export class Warrior{
     print(){
         return `Warrior: ${this.name}`
     }
-    protected(){
+    protected(){  // временная способность пока что ничего не делает только появляется
         this.protection = true
         setTimeout(()=>{
             this.protection = false        
@@ -23,7 +23,7 @@ export class Warrior{
     public get Damage():number{
         return this.damage
     }
-    public fight(n:number){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
+    public deffend(n:number){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
         this.health -= n   
         if(this.health<=0){
             this.health = 200
