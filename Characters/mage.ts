@@ -25,6 +25,7 @@ export class Mage extends Characters{
     attack(enemy:any){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
         super.attack(enemy)
     }
+
     public get DeathScrole():string{
         return `You died: ${this.deathScrole}`
     }
