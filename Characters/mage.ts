@@ -1,14 +1,20 @@
-export class Mage{
-    name:string 
-    private deathScrole:number =0 
-    private health:number = 80
-    private damage:number = 100
-    private protected:boolean // СПОСОБНОСТЬ ПОКА ЧТО В РАЗРАБОТКЕ
+import {Characters} from "./Character"
+export class Mage extends Characters{
     constructor(name:string){
+        super()
         this.name = name
+        this.health = 80
+        this.maxHealth =80
+        this.damage = 100
+        this.protection = false
+        this.deathScrole = 0
     }
     print(){
         return `Mage: ${this.name}`
+    }
+    protected():string{   // временная способность пока что ничего не делает только появляется
+        super.protected()
+        return "Protection activated"
     }
     public get Health():number{
         return this.health
@@ -16,12 +22,8 @@ export class Mage{
     public get Damage():number{
         return this.damage
     }
-    public deffend(n:number){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
-        this.health -= n   
-        if(this.health<=0){
-            this.health = 80
-            this.deathScrole++
-        }
+    attack(enemy:any){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
+        super.attack(enemy)
     }
     public get DeathScrole():string{
         return `You died: ${this.deathScrole}`
