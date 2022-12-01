@@ -1,21 +1,20 @@
-
-export class Thief{
-    name:string 
-    private deathScrole:number =0 
-    private health:number = 100
-    private damage:number = 25
-    protection:boolean = false
+import {Characters} from "./Character"
+export class Thief extends Characters{
     constructor(name:string){
+        super()
         this.name = name
+        this.health = 200
+        this.maxHealth =200
+        this.damage = 50
+        this.protection = false
+        this.deathScrole = 0
     }
     print(){
         return `Thief: ${this.name}`
     }
-    protected(){   // временная способность пока что ничего не делает только появляется
-        this.protection = true
-        setTimeout(()=>{
-            this.protection = false        
-        },1000)
+    protected():string{   // временная способность пока что ничего не делает только появляется
+        super.protected()
+        return "Protection activated"
     }
     public get Health():number{
         return this.health
@@ -23,12 +22,8 @@ export class Thief{
     public get Damage():number{
         return this.damage
     }
-    public deffend(n:number){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
-        this.health -= n   
-        if(this.health<=0){
-            this.health = 200
-            this.deathScrole++
-        }
+    attack(enemy:any){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
+        super.attack(enemy)
     }
     public get DeathScrole():string{
         return `You died: ${this.deathScrole}`
