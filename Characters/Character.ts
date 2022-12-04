@@ -6,30 +6,10 @@ export abstract class Characters{
     protected protection: boolean;
     protected deathScrole:number
 
-    get HP(): number {
-        return this.health
-    }
-    print(){
-        return `${this.name}`
-    }
-    get Damage():number{
-        return this.Damage
-    }
-    protected():string{   
-        this.protection = true
-        setTimeout(()=>{
-            this.protection = false        
-        },30000)
-        return "Protetion activated"
-    }
-    attack(enemy:any){  
-        enemy.health -= this.damage
-        if(enemy.health<=0){
-            enemy.health = enemy.maxHealth
-            enemy.deathScrole++
-        }
-    }
-    get DeathScrole():string{
-        return `You died: ${this.deathScrole}`
-    }
+    abstract get HP(): number 
+    abstract print():string
+    abstract get Damage():number
+    abstract protected():string 
+    abstract attack(enemy:any):any
+    abstract get DeathScrole():string
 }
