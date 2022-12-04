@@ -13,17 +13,16 @@ export class Mage extends Characters{
         return `Mage: ${this.name}`
     }
     protected():string{   // временная способность пока что ничего не делает только появляется
-        super.protected()
+        
         return "Protection activated"
     }
-    public get Health():number{
+    public get HP():number{
         return this.health
     }
     public get Damage():number{
         return this.damage
     }
-    attack(enemy:any){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
-        super.attack(enemy)
+    attack(enemy:any){     
     }
 
     public get DeathScrole():string{
