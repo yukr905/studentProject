@@ -13,17 +13,15 @@ export class Warrior extends Characters{
         return `Warrior: ${this.name}`
     }
     protected(){  // временная способность пока что ничего не делает только появляется
-        super.protected()
         return "Protection activated"
     }
-    public get Health():number{
+    public get HP():number{
         return this.health
     }
     public get Damage():number{
         return this.damage
     }
     attack(enemy:any){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
-        super.attack(enemy)
     }
     public get DeathScrole():string{
         return `You died: ${this.deathScrole}`
