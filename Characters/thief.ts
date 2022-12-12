@@ -24,7 +24,13 @@ export class Thief extends Characters{
     attack(enemy:any){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
 
     }
+    relive(){
+        this.deathScrole++ 
+        this.health = this.maxHealth
+    }
     public get DeathScrole():string{
+        this.deathScrole++ 
+        this.health = this.maxHealth
         return `You died: ${this.deathScrole}`
     }
 }

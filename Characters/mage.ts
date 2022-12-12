@@ -22,10 +22,16 @@ export class Mage extends Characters{
     public get Damage():number{
         return this.damage
     }
-    attack(enemy:any){     
+    attack(enemy:any){
+        enemy.health -= this.damage    
     }
-
+    relive(){
+        this.deathScrole++ 
+        this.health = this.maxHealth
+    }
     public get DeathScrole():string{
+        this.deathScrole++ 
+        this.health = this.maxHealth
         return `You died: ${this.deathScrole}`
     }
 }

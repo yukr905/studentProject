@@ -11,5 +11,6 @@ export abstract class Characters{
     abstract get Damage():number
     abstract protected():string 
     abstract attack(enemy:any):any
+    abstract relive():void
     abstract get DeathScrole():string
 }

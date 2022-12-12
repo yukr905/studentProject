@@ -6,7 +6,8 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "outDir": "build",   
-        "sourceMap": true 
+        "sourceMap": true ,
+        "esModuleInterop": true,
     },
     "include": ["*"]
 }

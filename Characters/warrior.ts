@@ -12,7 +12,7 @@ export class Warrior extends Characters{
     print(){
         return `Warrior: ${this.name}`
     }
-    protected(){  // временная способность пока что ничего не делает только появляется
+    protected(){  
         return "Protection activated"
     }
     public get HP():number{
@@ -21,7 +21,11 @@ export class Warrior extends Characters{
     public get Damage():number{
         return this.damage
     }
-    attack(enemy:any){  // ПРОСТО ТЕСТ РАБОТАЕТ ЛИ 
+    attack(enemy:any){  
+    }
+    relive(){
+        this.deathScrole++ 
+        this.health = this.maxHealth
     }
     public get DeathScrole():string{
         return `You died: ${this.deathScrole}`
