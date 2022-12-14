@@ -1,36 +1,38 @@
-
-//import  {router} from"./router/index"
-
+import  {router} from"./router/index"
 import express from "express"
-import ws from "ws"
+import WebSocket  from "ws"
 
 
 const app= express()
-// app.use(express.json())
-// app.use("/api" , router)
-app.get("/api",(req,res)=>{
-    res.send("Welcome our games")
-})
-const wsServer = new ws.Server({ noServer: true });
-wsServer.on('connection', socket => {
-  console.log('wsServer start');
-  socket.on('message', message => {
-    console.log(message.toString())
-    socket.send('hello from server');
-  });
+app.use(express.json())
+app.use("/api" , router)
 
-  socket.on('close', () => {
-    console.log('wsServer close');
+
+app.listen(3000,()=>{
+  console.log("Server started : 3000")
+});
+
+const ws = new WebSocket.Server({port:3001}) 
+
+ws.on("connection",(ws)=>{
+  console.log("new connection")
+  ws.on("message",(message:string)=>{
+    let data = (JSON.parse(message))
+    if(data.message =="attack"){
+
+      ws.send(`attack ${data.id}`)
+    }
+    if(data.message =="protected"){
+      ws.send(`protected ${data.id}`)
+    }
+    if(data.message =="relive"){
+      ws.send(`relive ${data.id}`)
+    }
+    if(data.message =="print"){
+      ws.send(`print ${data.id} ${data.message}`)
+    }
   })
-});
-
-const server = app.listen(3000);
-server.on('upgrade', (request, socket, head) => {
-  wsServer.handleUpgrade(request, socket, head, socket => {
-    wsServer.emit('connection', socket, request);
-  });
-});
-
+})
 
 
 
