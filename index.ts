@@ -1,9 +1,9 @@
 import  {router} from"./router/index"
 import express from "express"
 import WebSocket  from "ws"
-import {controllerWS} from "./controller/eventsController"
 import {handlerError} from "./middleware/handlerError"
-
+import {checker} from "./middleware/handlerEvent"
+import {eventController} from "./controller/eventsController"
 
 const app= express()
 app.use(express.json())
@@ -16,6 +16,7 @@ app.listen(3000,()=>{
 });
 
 const ws = new WebSocket.Server({port:3001}) 
-controllerWS(ws)
+ws.on("connection", checker)
+
 
 
