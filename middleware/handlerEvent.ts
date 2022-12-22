@@ -1,5 +1,6 @@
 import {eventController} from "../controller/eventsController"
 
+
 export function checker(ws:any){
     eventController.connect(ws)
     ws.on("close",eventController.disconnect)
