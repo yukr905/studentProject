@@ -18,5 +18,8 @@ export class ApiError extends Error{
     static internal(message:any) {
         return new ApiError(500, message)
     }
+    static unauth(message:any){
+        return new ApiError(401,message)
+    }
 }
 

@@ -1,8 +1,8 @@
 import {eventController} from "../controller/eventsController"
 
+
 export function checker(ws:any){
     eventController.connect(ws)
-    console.log("new connection")
     ws.on("close",eventController.disconnect)
     ws.on("message",(message:string)=>{
         let data = JSON.parse(message) 
@@ -22,9 +22,11 @@ export function checker(ws:any){
             case "print":
                 //валидация данных
                 eventController.print(ws,data)
+                break
             case "printAll":
                 //валидация данных
-                eventController.printAll
+                eventController.printAll(ws,data)
+                break
             }
         })
 }
