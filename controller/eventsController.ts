@@ -11,7 +11,6 @@ export class eventController{
         id++
         ws.unicid = id // присваиваем уникальноу ID
         client.push(ws)
-        console.log(client)
     }
     static async disconnect(ws:any){
         console.log("disconnection")
@@ -19,7 +18,7 @@ export class eventController{
                 if(value.readyState !== 1) {
                     client.splice(i, 1)
                 }
-            });
+            })
     }
     static async attack(ws:any , data:any){
         console.log("attack")
@@ -37,17 +36,17 @@ export class eventController{
         ws.send(`relive ${data.id}`)
     }
     static async print(ws:any,data:any){
-        console.log("tuta")
         client.forEach(function (value:any) {
             if(value.readyState == 1 && value.unicid == data.id) {
-                console.log("tut")
                 value.send(data.message)
             }
         })
     }
     static async printAll(ws:any,data:any){
+        console.log("tuta")
         client.forEach(function (value:any) {
             if(value.readyState == 1 ) {
+                console.log("tut")
                 return value.send(data.message)
             }
         })
