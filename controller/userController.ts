@@ -1,46 +1,20 @@
-
-async function register(req:any,res:any){
-    try {
-        const {name, email, password1, password2 , classCharacter} = req.body
-        if(password1 !== password2){
-            return res.status(400).json({message:"Passwords do not match, please check again "})
+import {registerUser , getMeInfo , updateUser , loginUser} from "../service/userService"
+import {} from "../middleware/apiError"
+export class userController{
+        static async  register (req:any,res:any){
+                const user = await registerUser(req.body)
+                return res.status(201).json(user)
         }
-        return res.status(201).json({success:true})
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({message:"Something went wrong "})
-    }
-}
-async function login(req:any,res:any){
-    try {
-        const {email,password} = req.body
-        return res.json({message:"JWT token"})
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({message:"Something went wrong "})
-    }
-}
-async function getMe(req:any,res:any){
-    try {
-        const id = req.userId //зашиваем через JWT в разработке
-        return res.json({message:"User information"})
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({message:"Something went wrong "})
-    }
-}
-async function updateMe(req:any,res:any){
-    try {
-        const id = req.userId //зашиваем через JWT в разработке
-        const {name, oldpassword , newpassword1,newpassword2, newClassCharacter} = req.body
-        if(newpassword1 !== newpassword2){
-            return res.status(400).json({message:"Passwords do not match, please check again "})
+        static async  login(req:any,res:any){
+                const token = await loginUser(req.body)
+                return res.json(token)
         }
-        return res.json({message:"new JWT token"})
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({message:"Something went wrong "})
-    }
+        static async  getMe(req:any,res:any){
+                const user = await getMeInfo(req.userId)
+                return res.json(user)
+        }
+        static async  updateMe(req:any,res:any){
+                const newUser = await updateUser(req.body)
+                return res.json(newUser)
+        }
 }
-
-export {register,login,updateMe,getMe}

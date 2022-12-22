@@ -1,12 +1,19 @@
 import Router from"express"
-import {login,register,getMe,updateMe}  from "../controller/userController"
-import {getAllClass} from"../controller/сharacterController"
+import {userController}  from "../controller/userController"
+import {characterController} from"../controller/сharacterController"
+import {handlerValidation} from "../middleware/handlerValidation"
+import {loginValidation,registerValidation} from"../middleware/validation"
+
+
+
 const router = Router()
 
-router.post("/register", register)
-router.post("/login", login)
-router.get("/me/:id", getMe)
-router.patch("/me:id", updateMe)
-router.get("/class", getAllClass)
+router.post("/register",registerValidation,handlerValidation.handlerregister , userController.register)
+router.post("/login",loginValidation,handlerValidation.handlerlogin, userController.login)
+router.get("/me/:id", userController.getMe)
+router.patch("/me:id",handlerValidation.handlerregister, userController.updateMe)
+router.get("/class", characterController.getAllClass)
+
+
 
 export {router}
