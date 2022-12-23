@@ -1,31 +1,34 @@
 import {eventController} from "../controller/eventsController"
+import {auth} from "../middleware/checkAuth"
 
 
-export function checker(ws:any){
-    eventController.connect(ws)
-    ws.on("close",eventController.disconnect)
-    ws.on("message",(message:string)=>{
+export async function checker(io:any){
+    console.log(io.token)
+    eventController.connect(io)
+    io.on("close",eventController.disconnect)
+    io.on("message",(message:string)=>{
         let data = JSON.parse(message) 
+        console.log(io.message.token)
         switch(data.event){
             case "attack":
                 //валидация данных
-                eventController.attack(ws,data)
+                eventController.attack(io,data)
                 break
             case "ability":
                 //валидация данных
-                eventController.ability(ws,data)
+                eventController.ability(io,data)
                 break
             case "relive":
                 //валидация данных
-                eventController.relive(ws,data)
+                eventController.relive(io,data)
                 break
             case "print":
                 //валидация данных
-                eventController.print(ws,data)
+                eventController.print(io,data)
                 break
             case "printAll":
                 //валидация данных
-                eventController.printAll(ws,data)
+                eventController.printAll(io,data)
                 break
             }
         })

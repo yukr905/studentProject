@@ -1,4 +1,6 @@
-export async function allClass() {
-    const characters = {} // получаем с БД
-    return characters
+export class characterService{
+    static  async  allClass() {
+        const characters = {} // получаем с БД
+        return characters
+    }
 }

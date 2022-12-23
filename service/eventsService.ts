@@ -1,18 +1,20 @@
-export async function  connectionDB(data:any){
-    //работа с БД
-}
-export async function disconnectionDB(data:any){
-    //работа с БД
-}
-export async function attack(data:any) {
-    //работа с БД
-}
-export async function ability(data:any) {
-    //работа с БД
-}
-export async function messageUser(data:any) {
-    //работа с БД
-}
-export async function relive(data:any) {
-    //работа с БД
+export class eventsService{
+    static async   connectionDB(data:any){
+        //работа с БД
+    }
+    static async  disconnectionDB(data:any){
+        //работа с БД
+    }
+    static async  attack(data:any) {
+        //работа с БД
+    }
+    static async  ability(data:any) {
+        //работа с БД
+    }
+    static async  messageUser(data:any) {
+        //работа с БД
+    }
+    static async  relive(data:any) {
+        //работа с БД
+    }
 }
