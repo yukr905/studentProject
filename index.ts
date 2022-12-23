@@ -1,9 +1,9 @@
 import  {router} from"./router/index"
 import express from "express"
-import WebSocket  from "ws"
+import {Server}  from "socket.io"
 import {handlerError} from "./middleware/handlerError"
-import {checker} from "./middleware/handlerEvent"
-import {eventController} from "./controller/eventsController"
+import { checker } from "./middleware/handlerEvent"
+import {auth} from "./middleware/checkAuth"
 
 const app= express()
 app.use(express.json())
@@ -15,8 +15,9 @@ app.listen(3000,()=>{
   console.log("Server started : 3000")
 });
 
-const ws = new WebSocket.Server({port:3001}) 
-ws.on("connection", checker)
+export const io = new Server(3001)
+
+io.use(auth.checkWs).on("connection", checker)
 
 
 
