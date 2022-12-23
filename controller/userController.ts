@@ -1,20 +1,19 @@
-import {registerUser , getMeInfo , updateUser , loginUser} from "../service/userService"
-import {} from "../middleware/apiError"
+import {userService} from "../service/userService"
 export class userController{
         static async  register (req:any,res:any){
-                const user = await registerUser(req.body)
+                const user = await userService.registerUser(req.body)
                 return res.status(201).json(user)
         }
         static async  login(req:any,res:any){
-                const token = await loginUser(req.body)
+                const token = await userService.loginUser(req.body)
                 return res.json(token)
         }
         static async  getMe(req:any,res:any){
-                const user = await getMeInfo(req.userId)
+                const user = await userService.getMeInfo(req.userId)
                 return res.json(user)
         }
         static async  updateMe(req:any,res:any){
-                const newUser = await updateUser(req.body)
+                const newUser = await userService.updateUser(req.body)
                 return res.json(newUser)
         }
 }
