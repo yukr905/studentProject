@@ -2,8 +2,7 @@ import { NextFunction, Request,Response } from 'express'
 import jwt from "jsonwebtoken"
 import {jwtsecret} from "../config"
 import {ApiError} from "./apiError"
-import {checker} from "../middleware/handlerEvent"
-import { Socket } from 'socket.io'
+
 
 export class auth{
     static async  checkAuth(req:Request,res:Response,next: NextFunction){
@@ -23,14 +22,14 @@ export class auth{
             return next(ApiError.unauth("User unauthorizen"))
         }
     }
-    static async checkWs(io:any, next: NextFunction){
+    static async checkWs(io:any, next: any){
         try {
-
             const tokenIo = io.handshake.headers.authorization
             if (!tokenIo) {
                 return next(ApiError.unauth("User unauthorizen"))
             }
             const decodedIo = jwt.verify(tokenIo, jwtsecret)
+            io.token = tokenIo
             next()
         } catch (error) {
             console.log(error)
