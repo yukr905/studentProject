@@ -1,6 +1,7 @@
 import  {router} from"./router/index"
 import express from "express"
 import {Server}  from "socket.io"
+
 import {handlerError} from "./middleware/handlerError"
 import { checker } from "./middleware/handlerEvent"
 import {auth} from "./middleware/checkAuth"
