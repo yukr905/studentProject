@@ -7,8 +7,7 @@ export async function checker(io:any){
     eventController.connect(io)
     io.on("close",eventController.disconnect)
     io.on("message",(message:string)=>{
-        let data = JSON.parse(message) 
-        console.log(io.message.token)
+        let data:any = message
         switch(data.event){
             case "attack":
                 //валидация данных

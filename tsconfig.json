@@ -8,6 +8,15 @@
         "outDir": "build",   
         "sourceMap": true ,
         "esModuleInterop": true,
+        "suppressImplicitAnyIndexErrors": false,
+        "listFiles":false,
+        "noEmitHelpers":false,
+        "noImplicitReturns": true,
+        "strict": true,
+        "declaration": true,
+        "emitDecoratorMetadata":false,
+        "experimentalDecorators":false,
+        "noImplicitUseStrict":false,
     },
     "include": ["*"]
 }
