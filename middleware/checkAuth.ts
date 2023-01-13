@@ -14,8 +14,8 @@ export class auth{
             if (!token) {
                 return next(ApiError.unauth("User unauthorizen"))
             }
-            const decoded = await jwt.verify(token, jwtsecret)
-            req.body.token = decoded
+            const decoded:any = await jwt.verify(token, jwtsecret)
+            req.body.id = decoded.id
             next()
         } catch (error) {
             console.log(error)
