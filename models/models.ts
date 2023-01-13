@@ -17,7 +17,7 @@ interface classesInstance
   extends Model<classesAttributes, classesCreationAttributes>,
     classesAttributes {
       createdAt?: Date;
-      updatedAt?: Date;
+      updateAt?: Date;
     }
 
 const Classes = db.define<classesInstance>(
@@ -25,7 +25,7 @@ const Classes = db.define<classesInstance>(
   {
     id: {
       allowNull: false,
-      autoIncrement: false,
+      autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
       unique: true,
@@ -50,7 +50,7 @@ const Classes = db.define<classesInstance>(
     ability:{
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    },
+    }
   }
 );
 interface usersAttributes {
@@ -68,18 +68,17 @@ interface usersInstance
   extends Model<usersAttributes, usersCreationAttributes>,
     usersAttributes {
       createdAt?: Date;
-      updatedAt?: Date;
+      updateAt?: Date;
     }
 
 const Users = db.define<usersInstance>(
   'users',
   {
     id: {
-      allowNull: false,
-      autoIncrement: false,
       primaryKey: true,
       type: DataTypes.INTEGER,
       unique: true,
+      autoIncrement:true
     },
     username:{
       type: DataTypes.STRING,
