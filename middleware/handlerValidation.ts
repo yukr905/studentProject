@@ -10,11 +10,8 @@ export class handlerValidation{
         if(!errors.isEmpty()){
             return res.status(400).json(errors.array())
         }
-        if(req.body.password1 !== req.body.password2){
-            return next(ApiError.badRequest400("Passwords do not match, please check again "))
-        }
-        if(req.body.class !== "Warrior" &&  req.body.class !=="Mage" && req.body.class !=="Thief"){
-            return next(ApiError.badRequest400("Mage or Warrior or Thief"))
+        if(req.body.class_id !== 1 &&  req.body.class !==2 && req.body.class !==3){
+            return next(ApiError.badRequest400("1 2 3"))
         }
         return next()
     }
