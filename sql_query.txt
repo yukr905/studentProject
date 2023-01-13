@@ -1,0 +1,17 @@
+SELECT * FROM USERS as u  WHERE u.email='test@gmail.com'
+
+SELECT email, username FROM USERS 
+
+INSERT INTO USERS(username,email,password,class_id) VALUES('username','email','hashPassword','class_id')
+
+INSERT INTO CLASSES(name,health,damage,attack_type,ability) VALUES('Thief',100,25,"выстрел из лука",false)
+
+SELECT * FROM CLASSES WHERE health>80 ORDER BY DESC
+
+SELECT COUNT(class_id) FROM users 
+
+UPDATE users SET username = 'TEST' WHERE id=3
+
+ALTER TABLE USERS RENAME COLUMN username to name;
+
+SELECT u.id , u.username, u.class_id,u.email , c.id, c.name, c.health, c.damage, c.attack_type,c.ability FROM USERS AS u FULL OUTER JOIN CLASSES as c on c.id=u.class_id
