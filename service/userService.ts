@@ -36,7 +36,7 @@ export class userService{
         return token
     }
     static async  getMeInfo(user:any){
-        try{
+
         const candidate:any = await Users.findAll(
           {attributes:["email","username"],where: {id:user.id},
             include: [
@@ -47,10 +47,10 @@ export class userService{
                 attributes:["id","name","health","damage","attack_type","ability"]
               }
           ]})
-        return candidate
-        }catch(e){
+        if(!candidate){
             return ApiError.internal("Что-то пошло не так")
         }
+        return candidate
     }
     static async  updateUser(user:any){
         const {email,password,username} = user

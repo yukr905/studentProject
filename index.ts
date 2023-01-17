@@ -19,11 +19,9 @@ async function start() {
     app.listen(3000, async()=>{
       console.log("Server started : 3000")
     });
-
     await db.authenticate()
     await Classes.sync()
     await Users.sync()
-
     console.log("database connection")
   } catch (error) {
     console.log(error)
