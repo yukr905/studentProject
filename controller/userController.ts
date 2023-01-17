@@ -9,7 +9,7 @@ export class userController{
                 return res.json(token)
         }
         static async  getMe(req:any,res:any){
-                const user = await userService.getMeInfo(req.userId)
+                const user = await userService.getMeInfo(req.body)
                 return res.json(user)
         }
         static async  updateMe(req:any,res:any){
