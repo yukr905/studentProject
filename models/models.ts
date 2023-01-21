@@ -1,4 +1,5 @@
-import { Model, Optional, DataTypes } from 'sequelize';
+import { Model, Optional, DataTypes } from 'sequelize'
+import { Schema, model, connect, Types } from 'mongoose'
 import {db} from './db'
 
 interface classesAttributes {
@@ -105,5 +106,23 @@ Users.belongsTo(Classes,{
   foreignKey:"class_id",
   as:"classes"
 })
+
+interface IUser {
+  _id:number,
+  username: string;
+  hp: number;
+  statuses: Types.Array<number>;
+}
+
+const userSchema = new Schema<IUser>({
+  _id: {type:Number,required:true},
+  username: { type: String, required: true },
+  hp: { type: Number, required: true },
+  statuses: {type: [Number],required:true}
+})
+
+export const UserWs = model<IUser>('UserWs', userSchema);
+
+
 export {Classes,Users}
   
