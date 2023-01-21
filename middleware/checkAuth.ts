@@ -28,8 +28,9 @@ export class auth{
             if (!tokenIo) {
                 return next(ApiError.unauth("User unauthorizen"))
             }
-            const decodedIo = jwt.verify(tokenIo, jwtsecret)
+            const decodedIo:any = jwt.verify(tokenIo, jwtsecret)
             io.token = tokenIo
+            io.user_id = decodedIo.id
             next()
         } catch (error) {
             console.log(error)
