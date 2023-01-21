@@ -1,12 +1,14 @@
 import  {router} from"./router/index"
 import express from "express"
 import {Server}  from "socket.io"
-
+import mongoose from "mongoose"
 import {handlerError} from "./middleware/handlerError"
 import { checker } from "./middleware/handlerEvent"
 import {auth} from "./middleware/checkAuth"
 import {db} from "./models/db"
 import {Users,Classes} from "./models/models"
+import { conf } from "./config"
+
 
 const app= express()
 app.use(express.json())
@@ -19,6 +21,7 @@ async function start() {
     app.listen(3000, async()=>{
       console.log("Server started : 3000")
     });
+    await mongoose.connect(conf.mongo)
     await db.authenticate()
     await Classes.sync()
     await Users.sync()
