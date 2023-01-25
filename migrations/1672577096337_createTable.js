@@ -9,7 +9,7 @@ exports.up = pgm => {
         health:{type:"integer",notNull: true,},
         damage:{type:"integer",notNull: true,},
         attack_type:{type:"varchar(50)",notNull: true,},
-        ability:{type:"boolean",default:false},
+        ability:{type:"varchar(50)",notNull: true},
         createdAt: {
             type: 'timestamp',
             notNull: true,
