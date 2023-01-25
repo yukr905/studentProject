@@ -8,6 +8,7 @@ import {auth} from "./middleware/checkAuth"
 import {db} from "./models/db"
 import {Users,Classes} from "./models/models"
 import { conf } from "./config"
+import {createClient} from "redis"
 
 
 const app= express()
@@ -16,6 +17,10 @@ app.use("/api" , router)
 
 app.use(handlerError)
 
+const url = conf.url
+export let client = createClient({
+    url
+})
 async function start() {
   try {
     app.listen(3000, async()=>{
@@ -25,12 +30,15 @@ async function start() {
     await db.authenticate()
     await Classes.sync()
     await Users.sync()
+    await client.connect()
+    client.on('error', (err) => console.log('Redis Client Error', err))
     console.log("database connection")
   } catch (error) {
     console.log(error)
   }
 }
 start()
+
 
 const io = new Server(3001)
 io.use(auth.checkWs).on("connection", checker)
