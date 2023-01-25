@@ -1,5 +1,5 @@
 import { updateObjectBindingPattern } from "typescript"
-import { UserWs } from "../models/models"
+import { UserWs } from "../models/usersWs"
 import {eventsService} from "../service/eventsService"
 
 let client:any = [] // список активных юзеров
