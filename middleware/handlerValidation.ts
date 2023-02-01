@@ -10,7 +10,7 @@ export class handlerValidation{
         if(!errors.isEmpty()){
             return res.status(400).json(errors.array())
         }
-        if(req.body.class_id !== 1 &&  req.body.class !==2 && req.body.class !==3){
+        if(req.body.class_id !== 1 &&  req.body.class_id !==2 && req.body.class_id!==3){
             return next(ApiError.badRequest400("1 2 3"))
         }
         return next()

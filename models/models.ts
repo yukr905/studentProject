@@ -1,4 +1,4 @@
-import { Model, Optional, DataTypes } from 'sequelize';
+import { Model, Optional, DataTypes } from 'sequelize'
 import {db} from './db'
 
 interface classesAttributes {
@@ -48,8 +48,8 @@ const Classes = db.define<classesInstance>(
       allowNull: false,
     },
     ability:{
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   }
 );
@@ -105,5 +105,6 @@ Users.belongsTo(Classes,{
   foreignKey:"class_id",
   as:"classes"
 })
+
 export {Classes,Users}
   
